@@ -1,5 +1,7 @@
 # HelloAsso Discord Bot
 
+![HelloAsso logo](https://www.helloasso.com/_nuxt/img/logo-helloasso-midnight.0e553e3.svg)
+
 ## Setup
 
 1. Install Python dependencies.
