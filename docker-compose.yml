@@ -1,0 +1,11 @@
+---
+version: '3'
+
+services:
+  helloasso:
+    build: .
+    container_name: helloasso-bot 
+    restart: always
+    ports:
+      - "5000:5000"
+
