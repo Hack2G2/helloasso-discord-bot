@@ -8,16 +8,16 @@ from os import getenv
 
 
 class Webserver(commands.Cog):
-    def __init__(self, bot, host, port):
-        self.bot = bot
+    def __init__(self, client, host, port):
+        self.client = client
         self.web_server.start()
 
         @routes.post("/" + SECRET_PATH)
         async def webhook(request):
-            channel = self.bot.get_channel(DISCORD_CHANNEL_ID)
+            channel = client.get_channel(id=DISCORD_CHANNEL_ID)
             await channel.send(":new: A transaction has been made on helloasso !")
-
-            return 200
+            
+            return web.Response(text='Sucess !',content_type='text/html')
 
         app.add_routes(routes)
 
@@ -30,7 +30,7 @@ class Webserver(commands.Cog):
 
     @web_server.before_loop
     async def web_server_before_loop(self):
-        await self.bot.wait_until_ready()
+        await self.client.wait_until_ready()
 
 
 if __name__ == "__main__":
@@ -39,7 +39,7 @@ if __name__ == "__main__":
         getenv("HOST"),
         getenv("PORT"),
         getenv("DISCORD_TOKEN"),
-        getenv("DISCORD_CHANNEL_ID"),
+        int(getenv("DISCORD_CHANNEL_ID")),
         getenv("SECRET_PATH"),
     )
 
