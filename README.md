@@ -20,3 +20,5 @@ python3 -m pip install -r requirements.txt
 You now can add your bot to your Discord server using the OAuth2 URL.
 
 4. Rename the file `.env.sample` to `env` and fill it with our Discord Token.
+
+5. Set your callback URL in HelloAsso to `http://<YOUR_IP>:<PORT>/<SECRET_PATH>`.

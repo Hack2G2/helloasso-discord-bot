@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 from os import getenv
 
 
+
 class Webserver(commands.Cog):
     def __init__(self, client, host, port):
         self.client = client
@@ -48,4 +49,5 @@ if __name__ == "__main__":
 
     bot = commands.Bot(command_prefix="!")
     bot.add_cog(Webserver(bot, HOST, PORT))
+    print("Starting ...")
     bot.run(DISCORD_TOKEN)
