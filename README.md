@@ -10,5 +10,13 @@
 python3 -m pip install -r requirements.txt
 ```
 
-2. Create a discord application, [here](https://discord.com/developers/applications).
-3. Rename the file `.env.sample` to `env` and fill it with our Discord Token.
+2. Create a Discord application and bot, [here](https://discord.com/developers/applications).
+
+3. On the left side menu, create an OAuth2 URL with the following permissions :
+- Manage roles
+- View channels
+- Send messages
+
+You now can add your bot to your Discord server using the OAuth2 URL.
+
+4. Rename the file `.env.sample` to `env` and fill it with our Discord Token.
