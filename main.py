@@ -24,15 +24,21 @@ async def print_send_log(msg, channel=None):
     await channel.send(f"[{strftime('%d/%m/%Y - %H:%M:%S')}] {msg}")
 
 
+@bot.event
+async def on_ready():
+    print_log("Bot is ready !")
+
+
 @bot.command(name="members", help="Show all members.")
 @commands.has_any_role("Bureau")
 async def members(ctx):
     await print_send_log(f"Fetching members ...", channel=ctx.channel)
-    for order in helloAssoAPI.get_form_orders(formSlug="cotisation-adhesion-2021-2022"):
+    orders = helloAssoAPI.get_form_orders(formSlug="cotisation-adhesion-2021-2022")
+    for order in orders:
         await print_send_log(
             f"ID: {order.id}, Discord: {order.discord}", channel=ctx.channel
         )
-    await print_send_log("Done !", channel=ctx.channel)
+    await print_send_log(f"We have {len(orders)} members !", channel=ctx.channel)
 
 
 @members.error
