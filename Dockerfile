@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 COPY requirements.txt .
 COPY main.py .
-COPY utils/ .
+COPY utils/ utils/ 
 COPY .env .
 
 RUN pip install --no-cache-dir -r requirements.txt
