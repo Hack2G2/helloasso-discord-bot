@@ -59,13 +59,7 @@ class Webserver(commands.Cog):
         async def webhook(request):
             req_json = await request.json()
             if "payer" in req_json["data"]:
-                order_id = req_json["data"]["items"][0]["payments"][0]["id"]
-                order = helloAssoAPI.get_order_details(order_id)
-
-                channel = client.get_channel(id=DISCORD_CHANNEL_ID)
-                await channel.send(
-                    f":new: A transaction has been made on helloasso ! (ID: {order.id}, Discord: {order.discord})"
-                )
+                await channel.send(f":new: A transaction has been made on helloasso !") 
 
             return web.Response(text="Sucess !", content_type="text/html")
 
